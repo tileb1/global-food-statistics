@@ -1,15 +1,15 @@
-# Global food statistics
+# Planet Cluedo: Who is killing Mother Earth?
 
 # Abstract
-A 150 word description of the project idea, goals, dataset used. What story you would like to tell and why? What's the motivation behind your project?
+Today, climate change is one of the world's greatest challenges. Although this is a topic that is reiterated almost every day, it seems that little progress is made in terms of coming up with solutions, considering its gravity. One of the main causal factors for global warming is the inefficient use of the world's natural resources. In an effort to further the advancements in battling climate change, and inspired by the famous board game, Cluedo, we aim to reveal global warming's biggest perpetrators by performing an analysis of the data published by the Food and Agriculture Organization of the United Nations ([FAOSTAT](http://www.fao.org/faostat/en/#home)). We believe that by doing so, we would potentially compel the identified culprits to boost their efforts in fighting climate change and generally increase public awareness of this topic.
 
 # Research questions
-A list of research questions you would like to address during the project. 
+- How has the world evolved in terms of factors that are relevant to climate change (agricultural activity, CO2 emissions, deforestation, etc.)?
+- What countries are the biggest/smallest contributors to global warming?
+- 
 
 # Dataset
 List the dataset(s) you want to use, and some ideas on how do you expect to get, manage, process and enrich it/them. Show us you've read the docs and some examples, and you've a clear idea on what to expect. Discuss data size and format if relevant.
-* [Open Food Facts](https://world.openfoodfacts.org/data)
-* [Cooking Recipes](infolab.stanford.edu/~west1/from-cookies-to-cooks/recipePages.zip)
 * [Global Food & Agriculture Statistics](https://www.kaggle.com/unitednations/global-food-agriculture-statistics)
 
 # A list of internal milestones up until project milestone 2
