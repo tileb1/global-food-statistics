@@ -8,6 +8,7 @@ With rising life expectancies and a rapid increase in population across the glob
 - What are the most popular food types (per country and overall) and their relative impact on CO2 emissions?
 - What countries are the most/least efficient in terms of meeting their nutritional needs?
 - How do countries collaborate in order to meet these needs?
+- Do realizable good practices exist in order to reduce the negative impacts of food production?
 
 # Dataset
 List the dataset(s) you want to use, and some ideas on how do you expect to get, manage, process and enrich it/them. Show us you've read the docs and some examples, and you've a clear idea on what to expect. Discuss data size and format if relevant.
