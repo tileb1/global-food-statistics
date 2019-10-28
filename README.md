@@ -8,6 +8,7 @@ With rising life expectancies and a rapid increase in population across the glob
 - What are the most popular food types (per country and overall) and their relative impact on CO2 emissions?
 - What countries are the most/least efficient in terms of meeting their nutritional needs?
 - How do countries collaborate in order to meet these needs?
+- Are there any trends in the production of different food types?
 - What realizable good practices exist in order to reduce the negative impacts of food production?
 
 # Dataset
@@ -32,7 +33,7 @@ We will be using the provided [Global Food & Agriculture Statistics](https://www
     - [ ] Fix data-driven statistics
     - [ ] Find relevant ways to communicate these statistics
 * 18.11
-    - [x] Final tweaks
+    - [ ] Final tweaks
     - [ ] Clean-up repo
 * 25.11
     - [ ] Hand-in milestone 2
