@@ -11,8 +11,7 @@ With rising life expectancies and a rapid increase in population across the glob
 - What realizable good practices exist in order to reduce the negative impacts of food production?
 
 # Dataset
-List the dataset(s) you want to use, and some ideas on how do you expect to get, manage, process and enrich it/them. Show us you've read the docs and some examples, and you've a clear idea on what to expect. Discuss data size and format if relevant.
-* [Global Food & Agriculture Statistics](https://www.kaggle.com/unitednations/global-food-agriculture-statistics)
+We will be using the provided [Global Food & Agriculture Statistics](https://www.kaggle.com/unitednations/global-food-agriculture-statistics) dataset. Since the dataset provided on Kaggle is already in a nice format and mostly cleansed, we do not expect to perform much processing on the data. Additionally, the dataset comprises of a wide variety of information which means that rather than looking to enrich it we will have to decide on what subset of information to use. However, we do plan to make use of the CO2 emission targets set by members countries of COP15 and COP21 conferences to compare these with evolution of CO2 emissions cause by food production.
 
 # A list of internal milestones up until project milestone 2
 * 21.10
