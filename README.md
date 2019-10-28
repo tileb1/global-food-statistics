@@ -15,7 +15,6 @@ List the dataset(s) you want to use, and some ideas on how do you expect to get,
 * [Global Food & Agriculture Statistics](https://www.kaggle.com/unitednations/global-food-agriculture-statistics)
 
 # A list of internal milestones up until project milestone 2
-Add here a sketch of your planning for the next project milestone.
 * 21.10
     - [x] Download the datastets
     - [x] Set up the repository
@@ -41,7 +40,6 @@ Add here a sketch of your planning for the next project milestone.
   
 
 # Questions for TAs
-Add here some questions you have for us, in general or project-specific.
 - Does the project have to be solely about food? Or is our approach acceptable?
 - Is it ok to make extensive use of the raw files made available in the data set?
 - What exactly do you mean by descriptive analysis for milestone 2?
