@@ -6,7 +6,11 @@ Today, climate change is one of the world's greatest challenges. Although this i
 # Research questions
 - How has the world recenlty evolved in terms of factors that are relevant to climate change (agricultural activity, CO2 emissions, deforestation, etc.)?
 - What countries are the biggest/smallest contributors to global warming?
-- 
+- How climate change affects food production (short time/long time)?
+- What are the possible scenarios regarding population and food production trends. Is humanity going to fight hunger or rather die of starvation? (I think should be main question)
+- Who feeds who? Countries, major exporters of food, and countries having farming as a major contributor to GDP?
+— Trends in categories of agriculture? (When do we start eating crickets?)
+
 
 # Dataset
 List the dataset(s) you want to use, and some ideas on how do you expect to get, manage, process and enrich it/them. Show us you've read the docs and some examples, and you've a clear idea on what to expect. Discuss data size and format if relevant.
