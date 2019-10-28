@@ -16,10 +16,28 @@ List the dataset(s) you want to use, and some ideas on how do you expect to get,
 
 # A list of internal milestones up until project milestone 2
 Add here a sketch of your planning for the next project milestone.
-* 24.11
-    - [x] Downloading the datastets.
-    - [x] Setting up the repository.
-    - [ ] First data exploration.
+* 21.10
+    - [x] Download the datastets
+    - [x] Set up the repository
+    - [x] First look at the data
+    - [x] Prepare deliverables for milestone 1
+* 28.10
+    - [ ] Clean up data
+    - [ ] Exploratory data analysis
+* 04.11
+    - [ ] Clean up data
+    - [ ] Exploratory data analysis
+    - [ ] Fix data-driven statistics
+    - [ ] Find relevant ways to communicate these statistics
+* 11.11
+    - [ ] Exploratory data analysis
+    - [ ] Fix data-driven statistics
+    - [ ] Find relevant ways to communicate these statistics
+* 18.11
+    - [x] Final tweaks
+    - [ ] Clean-up repo
+* 25.11
+    - [ ] Hand-in milestone 2
   
 
 # Questions for TAs
