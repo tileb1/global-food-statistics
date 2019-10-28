@@ -1,12 +1,14 @@
 # Planet Cluedo: Who is killing Mother Earth?
+# Will humanity's gluttony lead it to its end?
 
 # Abstract
-Today, climate change is one of the world's greatest challenges. Although this is a topic that is reiterated almost every day, it seems that little progress is made in terms of coming up with solutions, considering its gravity. One of the main causal factors for global warming is the inefficient use of the world's natural resources. In an effort to further the advancements in battling climate change, and inspired by the famous board game, Cluedo, we aim to reveal global warming's biggest perpetrators by performing an analysis of the data published by the Food and Agriculture Organization of the United Nations ([FAOSTAT](http://www.fao.org/faostat/en/#home)). We believe that by doing so, we would potentially compel the identified culprits to boost their efforts in fighting climate change and generally increase public awareness of this topic.
+With rising life expectancies and a rapid increase in population across the globe, it is getting harder for humanity to sustain its nutritional needs. The inefficient upscale of food production is having a noticeable negative impact on the planet. Deforestation, increased livestock farming, and the excessive use of fertilisers, which are all related to food production, are the main causal factors behind rising emissions in greenhouse gasses and consequently, global warming. In an effort to further the advancements in battling climate change, we aim to reveal how food production and the necessary resources have evolved and its relation to global warming. We will do so by carrying out an analysis of the data published by the Food and Agriculture Organization of the United Nations ([FAOSTAT](http://www.fao.org/faostat/en/#home)). We believe that by doing so, we could potentially increase general public awareness of this topic and compel people to keep the stated issue in mind when acting as consumers.
 
 # Research questions
-- How has the world recenlty evolved in terms of factors that are relevant to climate change (agricultural activity, CO2 emissions, deforestation, etc.)?
-- What countries are the biggest/smallest contributors to global warming?
-- 
+- How has the world recenlty evolved in terms of factors that are relevant to agriculture and climate change (agricultural activity, CO2 emissions, deforestation, etc.)?
+- What are the most popular food types (per country and overall) and their relative impact on CO2 emissions?
+- What countries are the most/least efficient in terms of meeting their nutritional needs?
+- How do countries collaborate in order to meet these needs?
 
 # Dataset
 List the dataset(s) you want to use, and some ideas on how do you expect to get, manage, process and enrich it/them. Show us you've read the docs and some examples, and you've a clear idea on what to expect. Discuss data size and format if relevant.
