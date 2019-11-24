@@ -21,20 +21,20 @@ We will be using the provided [Global Food & Agriculture Statistics](https://www
     - [x] First look at the data
     - [x] Prepare deliverables for milestone 1
 * 28.10
-    - [ ] Clean up data
-    - [ ] Exploratory data analysis
+    - [x] Clean up data
+    - [x] Exploratory data analysis
 * 04.11
-    - [ ] Clean up data
-    - [ ] Exploratory data analysis
-    - [ ] Fix data-driven statistics
-    - [ ] Find relevant ways to communicate these statistics
+    - [x] Clean up data
+    - [x] Exploratory data analysis
+    - [x] Fix data-driven statistics
+    - [x] Find relevant ways to communicate these statistics
 * 11.11
-    - [ ] Exploratory data analysis
-    - [ ] Fix data-driven statistics
-    - [ ] Find relevant ways to communicate these statistics
+    - [x] Exploratory data analysis
+    - [x] Fix data-driven statistics
+    - [x] Find relevant ways to communicate these statistics
 * 18.11
-    - [ ] Final tweaks
-    - [ ] Clean-up repo
+    - [x] Final tweaks
+    - [x] Clean-up repo
 * 25.11
     - [ ] Hand-in milestone 2
   
