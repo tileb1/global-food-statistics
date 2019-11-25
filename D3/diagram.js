@@ -42,6 +42,7 @@ function hierarchy(data) {
   hierarchy = d3.stratify()(root);
   const countryMap = new Map(hierarchy.leaves().map(d => [d.parent.id + "/" + d.id, d]));
   for (const d of hierarchy.leaves()) d.incoming = [], d.outgoing = [];
+  data.reverse();
   data.forEach(d => {
     const exporter = countryMap.get(d["Exporter Continent"] + "/" + d["Exporter"]);
     const importer = countryMap.get(d["Importer Continent"] + "/" + d["Importer"]);
