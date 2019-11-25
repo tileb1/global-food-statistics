@@ -7,12 +7,21 @@ With rising life expectancies and a rapid increase in population across the glob
 - How has the world recenlty evolved in terms of factors that are relevant to agriculture and climate change (agricultural activity, CO2 emissions, deforestation, etc.)?
 - What are the most popular food types (per country and overall) and their relative impact on CO2 emissions?
 - What countries are the most/least efficient in terms of meeting their nutritional needs?
-- How do countries collaborate in order to meet these needs?
 - Are there any trends in the production of different food types?
-- What realizable good practices exist in order to reduce the negative impacts of food production?
+- How do countries collaborate in order to meet these needs?
 
 # Dataset
-We will be using the provided [Global Food & Agriculture Statistics](https://www.kaggle.com/unitednations/global-food-agriculture-statistics) dataset. Since the dataset on Kaggle is already in a nice format and mostly cleansed, we do not expect to perform much pre-processing on the data. Additionally, the dataset comprises of a wide variety of information which means that rather than looking to enrich it we will have to decide on what subset of information to use. However, we do plan to make use of the CO2 emission targets set by members countries of COP15 and COP21 conferences to compare these with evolution of CO2 emissions cause by food production.
+We will be using the provided [Global Food & Agriculture Statistics](https://www.kaggle.com/unitednations/global-food-agriculture-statistics) dataset. Since the dataset on Kaggle was already in a nice format and mostly cleansed, we did not  perform much pre-processing on the data. Additionally, we re-extracted the FAOSTAT datasets directly from their website in certain cases as the copies provided on Kaggle were not up to date. Alternatively, information about minor cleaning is included in the notebook. Additionally, as the original dataset on kaggle included a wide variety of data we narrowed it down to the following in order to answer our research questions:
+- Trade Detail Data
+- Population Data
+- Land Use Data
+- Food Balance Data
+- Fertilizer Data
+- Crops Data
+- Temperature Change Data
+- Emissions Data
+
+For more details check the `/data` folder.
 
 # A list of internal milestones up until project milestone 2
 * 21.10
@@ -36,10 +45,7 @@ We will be using the provided [Global Food & Agriculture Statistics](https://www
     - [x] Final tweaks
     - [x] Clean-up repo
 * 25.11
-    - [ ] Hand-in milestone 2
+    - [x] Hand-in milestone 2
   
 
 # Questions for TAs
-- Does the project have to be solely about food? Or is our approach acceptable?
-- Is it ok to make extensive use of the raw files made available in the data set?
-- What exactly do you mean by descriptive analysis for milestone 2?
