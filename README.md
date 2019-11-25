@@ -51,7 +51,7 @@ For more details check the `/data` folder.
 # Plans for milestone 3
 As we have already performed thorough analyses in milestone 2, we plan to bring the data story to life in milestone 3 by including interactive plots and tying everything together in a coherent way. Additionally, we plan to complement our work done so far with some predictive and classification/clustering analyses . These will include: classifying countries based on their behaviours with respect to their use of resources and planet awareness; clustering together countries that relie on the same share of the world's resources.
 
-# A list of internal milestones up until project milestone 3
+# A list of internal milestones for milestone 3
 * 02.12
     - [ ] Convert plots to javascript
     - [ ] ML clustering of countries
