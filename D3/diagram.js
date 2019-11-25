@@ -1,9 +1,9 @@
 const colorin = "#00f";
 const colorout = "#f00";
-const colornone = "#333";
+const colornone = "#888";
 const width = 800;
 const radius = 250;
-scale = d3.scaleSqrt().domain([0.001, 6000000]).range([0.3, 1]);
+scale = d3.scaleSqrt().domain([0.001, 6000000]).range([0.6, 1]);
 
 const line = d3.lineRadial()
   .curve(d3.curveBundle.beta(0.85))
@@ -88,30 +88,20 @@ const link = svg.append("g")
   .join("path")
     .style("mix-blend-mode", "none")
     .style("opacity", 0.3)
-    // .style("mix-blend-mode", "multiply")
     .attr("d", ({exporter, importer}) => line(exporter.path(importer)))
     .each(function(d) { d.path = this; });
 
 function overed(d) {
-  // link.style("mix-blend-mode", "none");
   d3.select(this).attr("font-weight", "bold");
-  // d3.selectAll(d.incoming.map(d => d.path)).attr("stroke", colorin).raise();
-  // d3.selectAll(d.incoming.map(([d]) => d.text)).attr("fill", colorin).attr("font-weight", "bold");
   d3.selectAll(d.outgoing.map(d => d.path))
     .style("opacity", 1)
-    .attr("stroke", d => d3.interpolateReds(scale(d.value)))
+    .attr("stroke", d => d3.interpolateBlues(scale(d.value)))
     .raise();
-  // d3.selectAll(d.outgoing.map(d => d.path)).style("mix-blend-mode", "none").attr("stroke", colorin).raise();
-  // d3.selectAll(d.outgoing.map(([, d]) => d.text)).attr("fill", colorout).attr("font-weight", "bold");
 }
 
 function outed(d) {
-  // link.style("mix-blend-mode", "multiply");
   d3.select(this).attr("font-weight", null);
-  // d3.selectAll(d.incoming.map(d => d.path)).attr("stroke", null);
-  // d3.selectAll(d.incoming.map(([d]) => d.text)).attr("fill", null).attr("font-weight", null);
   d3.selectAll(d.outgoing.map(d => d.path))
     .style("opacity", 0.3)
-    .attr("stroke", null);///.style("mix-blend-mode", "multiply");
-  // d3.selectAll(d.outgoing.map(([, d]) => d.text)).attr("fill", null).attr("font-weight", null);
+    .attr("stroke", null);
 }
