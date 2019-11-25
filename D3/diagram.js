@@ -61,6 +61,26 @@ const root = tree(data.sort((a, b) => d3.ascending(a.height, b.height) || d3.asc
 const svg = d3.select("body").append("svg")
     .attr("viewBox", [-width / 2, -width / 2, width, width]);
 
+const axis = svg.append("g")
+  .attr("height", 300)
+  .attr("width", 100)
+  .attr("transform", "translate(-300,-200)")
+  .selectAll("g")
+  .data(d3.range(6).map(i => (i + 1)))
+  .join("g")
+    .attr("transform", d => `translate(0, ${d * 22})`);
+  
+axis.append("rect")
+  .attr("height", 20)
+  .attr("width", 30)
+  .attr("fill", d => d3.interpolateBlues(scale(d * 1000000)));
+axis.append("text")
+  .attr("font-family", "sans-serif")
+  .attr("font-size", 10)
+  .attr("dy", "1.3em")
+  .attr("x", 35)
+  .text(d => `$${d} billion`);
+
 const node = svg.append("g")
     .attr("font-family", "sans-serif")
     .attr("font-size", 6)
@@ -69,7 +89,7 @@ const node = svg.append("g")
   .join("g")
     .attr("transform", d => `rotate(${d.x * 180 / Math.PI - 90}) translate(${d.y},0)`)
   .append("text")
-    .attr("dy", "0.05em")
+    .attr("dy", "0.5em")
     .attr("x", d => d.x < Math.PI ? 6 : -6)
     .attr("text-anchor", d => d.x < Math.PI ? "start" : "end")
     .attr("transform", d => d.x >= Math.PI ? "rotate(180)" : null)
