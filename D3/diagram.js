@@ -1,6 +1,6 @@
 const colorin = "#00f";
 const colorout = "#f00";
-const colornone = "#ccc";
+const colornone = "#333";
 const width = 800;
 const radius = 250;
 scale = d3.scaleSqrt().domain([0.001, 6000000]).range([0.3, 1]);
@@ -73,6 +73,7 @@ const node = svg.append("g")
     .attr("text-anchor", d => d.x < Math.PI ? "start" : "end")
     .attr("transform", d => d.x >= Math.PI ? "rotate(180)" : null)
     .text(d => d.id)
+    .attr("class", "label")
     .each(function(d) { d.text = this; })
     .on("mouseover", overed)
     .on("mouseout", outed)
@@ -85,15 +86,20 @@ const link = svg.append("g")
   .data(root.leaves().flatMap(leaf => leaf.outgoing))
   .join("path")
     .style("mix-blend-mode", "none")
+    .style("opacity", 0.3)
+    // .style("mix-blend-mode", "multiply")
     .attr("d", ({exporter, importer}) => line(exporter.path(importer)))
     .each(function(d) { d.path = this; });
 
 function overed(d) {
-  // link.style("mix-blend-mode", "multiply");
+  // link.style("mix-blend-mode", "none");
   d3.select(this).attr("font-weight", "bold");
   // d3.selectAll(d.incoming.map(d => d.path)).attr("stroke", colorin).raise();
   // d3.selectAll(d.incoming.map(([d]) => d.text)).attr("fill", colorin).attr("font-weight", "bold");
-  d3.selectAll(d.outgoing.map(d => d.path)).style("mix-blend-mode", "none").attr("stroke", d => d3.interpolateReds(scale(d.value))).raise();
+  d3.selectAll(d.outgoing.map(d => d.path))
+    .style("opacity", 1)
+    .attr("stroke", d => d3.interpolateReds(scale(d.value)))
+    .raise();
   // d3.selectAll(d.outgoing.map(d => d.path)).style("mix-blend-mode", "none").attr("stroke", colorin).raise();
   // d3.selectAll(d.outgoing.map(([, d]) => d.text)).attr("fill", colorout).attr("font-weight", "bold");
 }
@@ -103,6 +109,8 @@ function outed(d) {
   d3.select(this).attr("font-weight", null);
   // d3.selectAll(d.incoming.map(d => d.path)).attr("stroke", null);
   // d3.selectAll(d.incoming.map(([d]) => d.text)).attr("fill", null).attr("font-weight", null);
-  d3.selectAll(d.outgoing.map(d => d.path)).attr("stroke", null);///.style("mix-blend-mode", "multiply");
+  d3.selectAll(d.outgoing.map(d => d.path))
+    .style("opacity", 0.3)
+    .attr("stroke", null);///.style("mix-blend-mode", "multiply");
   // d3.selectAll(d.outgoing.map(([, d]) => d.text)).attr("fill", null).attr("font-weight", null);
 }
