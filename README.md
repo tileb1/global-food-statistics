@@ -5,10 +5,10 @@ With rising life expectancies and a rapid increase in population across the glob
 
 # Research questions
 1. How has the world recenlty evolved in terms of factors that are relevant to agriculture and climate change (agricultural activity, CO2 emissions, deforestation, etc.)?
-2. What are the most popular food types (per country and overall) and their relative impact on CO2 emissions?
-- Are there any trends in the production of different food types and their efficiency in terms of CO2 emissions?
-- What countries are the most/least efficient in terms of meeting their nutritional needs?
-- How do countries collaborate in order to meet these needs?
+2. What are the most popular food types and their relative impact on CO2 emissions?
+3. Are there any trends in the production of different food types and their efficiency in terms of CO2 emissions?
+4. What countries are the most/least efficient in terms of meeting their nutritional needs?
+5. How do countries collaborate in order to meet these needs?
 
 # Dataset
 We will be using the provided [Global Food & Agriculture Statistics](https://www.kaggle.com/unitednations/global-food-agriculture-statistics) dataset. Since the dataset on Kaggle is already in a nice format and mostly cleansed, we did not  perform much pre-processing on the data. Additionally, we re-extracted the FAOSTAT datasets directly from their website in certain cases as the copies provided on Kaggle were not up to date. Alternatively, information about minor cleaning is included in the notebook. Additionally, as the original dataset on kaggle included a wide variety of data we narrowed it down to the following in order to answer our research questions:
@@ -51,4 +51,14 @@ For more details check the `/data` folder.
 # Plans for milestone 3
 As we have already performed thorough analyses in milestone 2, we plan to bring the data story to life in milestone 3 by including interactive plots and tying everything together in a coherent way. Additionally, we plan to complement our work done so far with some predictive and classification/clustering analyses . These will include: classifying countries based on their behaviours with respect to their use of resources and planet awareness; clustering together countries that relie on the same share of the world's resources.
 
-# Questions for TAs
+# A list of internal milestones up until project milestone 2
+* 02.12
+    - [ ] Convert plots to javascript
+    - [ ] ML clustering of countries
+    - [ ] Build Data Story flow
+* 09.12
+    - [ ] Convert plots to javascript
+    - [ ] Write Data Story
+* 16.12
+    - [ ] Convert plots to javascript
+    - [ ] Write Data Story
