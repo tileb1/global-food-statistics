@@ -2,7 +2,8 @@ const colorin = "#00f";
 const colorout = "#f00";
 const colornone = "#ccc";
 const width = 800;
-const radius = 300;
+const radius = 250;
+scale = d3.scaleSqrt().domain([0.001, 6000000]).range([0.3, 1]);
 
 const line = d3.lineRadial()
   .curve(d3.curveBundle.beta(0.85))
@@ -44,7 +45,6 @@ function hierarchy(data) {
   data.forEach(d => {
     const exporter = countryMap.get(d["Exporter Continent"] + "/" + d["Exporter"]);
     const importer = countryMap.get(d["Importer Continent"] + "/" + d["Importer"]);
-
     // Only outgoing for now
     if (exporter && importer) {
       const value = d["Value"];
@@ -62,7 +62,7 @@ const svg = d3.select("body").append("svg")
 
 const node = svg.append("g")
     .attr("font-family", "sans-serif")
-    .attr("font-size", 10)
+    .attr("font-size", 6)
   .selectAll("g")
   .data(root.leaves())
   .join("g")
@@ -84,24 +84,25 @@ const link = svg.append("g")
   .selectAll("path")
   .data(root.leaves().flatMap(leaf => leaf.outgoing))
   .join("path")
-    .style("mix-blend-mode", "multiply")
+    .style("mix-blend-mode", "none")
     .attr("d", ({exporter, importer}) => line(exporter.path(importer)))
     .each(function(d) { d.path = this; });
 
 function overed(d) {
-  link.style("mix-blend-mode", null);
+  // link.style("mix-blend-mode", "multiply");
   d3.select(this).attr("font-weight", "bold");
   // d3.selectAll(d.incoming.map(d => d.path)).attr("stroke", colorin).raise();
   // d3.selectAll(d.incoming.map(([d]) => d.text)).attr("fill", colorin).attr("font-weight", "bold");
-  d3.selectAll(d.outgoing.map(d => d.path)).attr("stroke", d => d3.interpolateOranges(0.5 + d.value / 12000000)).raise();
+  d3.selectAll(d.outgoing.map(d => d.path)).style("mix-blend-mode", "none").attr("stroke", d => d3.interpolateReds(scale(d.value))).raise();
+  // d3.selectAll(d.outgoing.map(d => d.path)).style("mix-blend-mode", "none").attr("stroke", colorin).raise();
   // d3.selectAll(d.outgoing.map(([, d]) => d.text)).attr("fill", colorout).attr("font-weight", "bold");
 }
 
 function outed(d) {
-  link.style("mix-blend-mode", "multiply");
+  // link.style("mix-blend-mode", "multiply");
   d3.select(this).attr("font-weight", null);
   // d3.selectAll(d.incoming.map(d => d.path)).attr("stroke", null);
   // d3.selectAll(d.incoming.map(([d]) => d.text)).attr("fill", null).attr("font-weight", null);
-  d3.selectAll(d.outgoing.map(d => d.path)).attr("stroke", null);
+  d3.selectAll(d.outgoing.map(d => d.path)).attr("stroke", null);///.style("mix-blend-mode", "multiply");
   // d3.selectAll(d.outgoing.map(([, d]) => d.text)).attr("fill", null).attr("font-weight", null);
 }
