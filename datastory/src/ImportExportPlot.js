@@ -48,100 +48,109 @@ function ImportExportPlot() {
     );
   }
 
-  return (<svg viewBox="-200 -150 400 300" xmlns="http://www.w3.org/2000/svg">
-    {selectedCountry && (<>
-      <g transform="translate(-200, -140)" fontSize="7">
-        {selectedCountry.data.top_exports.length > 0 && (<>
-          <text fontWeight="bold">Top exports</text>
-          {selectedCountry.data.top_exports.map((e, i) => (
-            <text fontSize={6} key={i} dy={8 + i * 7}>{e.name} — {format("$.2s")(e.value * 1000).replace(/G/,"B")}</text>         
-          ))}
-        </>)}
-      </g>
-
-      <g
-        fontSize="7"
-        transform={`translate(-200, ${-140 + (selectedCountry.data.top_exports.length > 0 ? 14 : 0) + selectedCountry.data.top_exports.length * 7})`}
-      >
-        {selectedCountry.data.top_imports.length > 0 && (<>
-          <text fontWeight="bold">Top imports</text>
-          {selectedCountry.data.top_imports.map((e, i) => (
-            <text fontSize={6} key={i} dy={8 + i * 7}>{e.name} — {format("$.2s")(e.value * 1000).replace(/G/,"B")}</text>         
-          ))}
-        </>)}
-      </g>
-    </>)}
-  
+  return (<div className="plot">
     {/* Export/Import switch */}
-    <g transform="translate(150, -140)">
-      <g pointerEvents="bounding-box" style={{cursor: 'pointer'}} onClick={() => setMode('export')}>
-        <circle cx="0" cy="0" r="3" fill={mode === 'export' ? purple : 'none'} stroke={purple}/>
-        <text fontSize="6" dy="2" dx="6">Export</text>
-      </g>
-      <g pointerEvents="bounding-box" style={{cursor: 'pointer'}} transform="translate(0, 10)" onClick={() => setMode('import')}>
-        <circle cx="0" cy="0" r="3" fill={mode === 'import' ? purple : 'none'} stroke={purple}/>
-        <text fontSize="6" dy="2" dx="6">Import</text>
-      </g>
-    </g>
+    <div className="plot-switch">
+      <button
+        className={mode === 'export' ? 'button button-outline' : 'button button-clear'}
+        onClick={() => setMode('export')}
+      >
+        Export
+      </button>      
+      <button
+        className={mode === 'import' ? 'button button-outline' : 'button button-clear'}
+        onClick={() => setMode('import')}
+      >
+        Import
+      </button>
+    </div>
+    
+    <svg viewBox="-200 -150 400 300" xmlns="http://www.w3.org/2000/svg">
+      {selectedCountry && (<>
+        <g
+          fontSize="0.4em"
+          transform="translate(-200, -140)"
+        >
+          {selectedCountry.data.top_exports.length > 0 && (<>
+            <text fontWeight="bold">Top exports</text>
+            {selectedCountry.data.top_exports.map((e, i) => (
+              <text fontSize="0.8em" key={i} dy={8 + i * 7}>{e.name} — {format("$.2s")(e.value * 1000).replace(/G/,"B")}</text>         
+            ))}
+          </>)}
+        </g>
 
-    {/* Loader */}
-    {!countries && (
-      <g transform="translate(-80, -80)">
-        <image width="160" height="160" xlinkHref="/loader.svg" />
-      </g>
-    )}
+        <g
+          fontSize="0.4em"
+          transform={`translate(-200, ${-140 + (selectedCountry.data.top_exports.length > 0 ? 14 : 0) + selectedCountry.data.top_exports.length * 7})`}
+        >
+          {selectedCountry.data.top_imports.length > 0 && (<>
+            <text fontWeight="bold">Top imports</text>
+            {selectedCountry.data.top_imports.map((e, i) => (
+              <text fontSize="0.8em" key={i} dy={8 + i * 7}>{e.name} — {format("$.2s")(e.value * 1000).replace(/G/,"B")}</text>         
+            ))}
+          </>)}
+        </g>
+      </>)}
 
-    {/* Countries clockface */}
-    {countries && (
-      <g>
-        {countries.leaves().map((l, i) => (
-          <g
-            key={i}
-            transform={`rotate(${l.x * 180 / Math.PI - 90}) translate(${l.y},0)`}
-          >
-            <text
-              className="country-tag"
-              pointerEvents="bounding-box"
-              style={{cursor: "pointer"}}
-              fontSize={5}
-              dy="0.5em"
-              x={l.x < Math.PI ? 6 : -6}
-              textAnchor={l.x < Math.PI ? "start" : "end"}
-              transform={l.x >= Math.PI ? "rotate(180)" : ""}
-              onMouseEnter={() => selectCountry(l)}
-              onMouseLeave={() => selectCountry(null)}
-            >{l.data.name}</text>
-          </g>
-        ))}
-      </g>
-    )}
+      {/* Loader */}
+      {!countries && (
+        <g transform="translate(-80, -80)">
+          <image width="160" height="160" xlinkHref="/loader.svg" />
+        </g>
+      )}
 
-    {/* Trade links */}
-    {trades && (
-      <g fill="none" stroke="#888">
-        {trades.map((t, i) => (
-          (!isSelected(t) && (
-            <path
+      {/* Countries clockface */}
+      {countries && (
+        <g>
+          {countries.leaves().map((l, i) => (
+            <g
               key={i}
-              style={{maxBlendMode: "none", opacity: 0.2, zIndex: 99}}
-              stroke="#888"
-              d={line(t.path)}
-            />
-          ))
-        ))}
-        {trades.map((t, i) => (
-          (isSelected(t) && (
-            <path
-              key={i}
-              style={{maxBlendMode: "none", opacity: 0.8, zIndex: 100}}
-              stroke={interpolateBlues(scale(t.amount))}
-              d={line(t.path)}
-            />
-          ))
-        ))}
-      </g>
-    )}
-  </svg>);
+              transform={`rotate(${l.x * 180 / Math.PI - 90}) translate(${l.y},0)`}
+            >
+              <text
+                className="country-tag"
+                pointerEvents="bounding-box"
+                style={{cursor: "pointer"}}
+                fontSize="0.3em"
+                dy="0.5em"
+                x={l.x < Math.PI ? 6 : -6}
+                textAnchor={l.x < Math.PI ? "start" : "end"}
+                transform={l.x >= Math.PI ? "rotate(180)" : ""}
+                onMouseEnter={() => selectCountry(l)}
+                onMouseLeave={() => selectCountry(null)}
+              >{l.data.name}</text>
+            </g>
+          ))}
+        </g>
+      )}
+
+      {/* Trade links */}
+      {trades && (
+        <g fill="none" stroke="#888">
+          {trades.map((t, i) => (
+            (!isSelected(t) && (
+              <path
+                key={i}
+                style={{maxBlendMode: "none", opacity: 0.2, zIndex: 99}}
+                stroke="#888"
+                d={line(t.path)}
+              />
+            ))
+          ))}
+          {trades.map((t, i) => (
+            (isSelected(t) && (
+              <path
+                key={i}
+                style={{maxBlendMode: "none", opacity: 0.8, zIndex: 100}}
+                stroke={interpolateBlues(scale(t.amount))}
+                d={line(t.path)}
+              />
+            ))
+          ))}
+        </g>
+      )}
+    </svg>
+  </div>);
 }
 
 export default ImportExportPlot;
