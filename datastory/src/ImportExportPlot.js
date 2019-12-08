@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { stratify, lineRadial, curveBundle, cluster,
          ascending, scaleSqrt, interpolateBlues, format } from 'd3';
 
+const purple = "#9b4dca";
 const scale = scaleSqrt().domain([0.001, 6000000]).range([0.6, 1]);
 const line = lineRadial()
   .curve(curveBundle.beta(0.85))
@@ -16,7 +17,7 @@ function ImportExportPlot() {
 
   useEffect(() => {
     fetch("trade_data.json").then((resp) => resp.json()).then((json) => {
-      const tree = cluster().size([2 * Math.PI, 150]);
+      const tree = cluster().size([2 * Math.PI, 100]);
       const h = stratify().id((d) => d.id).parentId((d) => d.parent)(json.countries);
       const t = tree(h.sort((a, b) => ascending(a.height, b.height) || ascending(a.id)));
       updateCountries(t);
@@ -47,9 +48,9 @@ function ImportExportPlot() {
     );
   }
 
-  return (<svg viewBox="-400 -400 400 400" xmlns="http://www.w3.org/2000/svg">
+  return (<svg viewBox="-200 -150 400 300" xmlns="http://www.w3.org/2000/svg">
     {selectedCountry && (<>
-      <g transform="translate(-400, -390)" fontSize="7">
+      <g transform="translate(-200, -140)" fontSize="7">
         {selectedCountry.data.top_exports.length > 0 && (<>
           <text fontWeight="bold">Top exports</text>
           {selectedCountry.data.top_exports.map((e, i) => (
@@ -60,7 +61,7 @@ function ImportExportPlot() {
 
       <g
         fontSize="7"
-        transform={`translate(-400, ${-390 + (selectedCountry.data.top_exports.length > 0 ? 14 : 0) + selectedCountry.data.top_exports.length * 7})`}
+        transform={`translate(-200, ${-140 + (selectedCountry.data.top_exports.length > 0 ? 14 : 0) + selectedCountry.data.top_exports.length * 7})`}
       >
         {selectedCountry.data.top_imports.length > 0 && (<>
           <text fontWeight="bold">Top imports</text>
@@ -70,31 +71,36 @@ function ImportExportPlot() {
         </>)}
       </g>
     </>)}
-
-    <g transform="translate(-50, -390)">
-      <g style={{cursor: 'pointer'}} onClick={() => setMode('export')}>
-        <circle cx="0" cy="0" r="3" fill={mode === 'export' ? '#2a3570' : 'none'} stroke="#2a3570"/>
+  
+    {/* Export/Import switch */}
+    <g transform="translate(150, -140)">
+      <g pointerEvents="bounding-box" style={{cursor: 'pointer'}} onClick={() => setMode('export')}>
+        <circle cx="0" cy="0" r="3" fill={mode === 'export' ? purple : 'none'} stroke={purple}/>
         <text fontSize="6" dy="2" dx="6">Export</text>
       </g>
-      <g style={{cursor: 'pointer'}} transform="translate(0, 10)" onClick={() => setMode('import')}>
-        <circle cx="0" cy="0" r="3" fill={mode === 'import' ? '#2a3570' : 'none'} stroke="#2a3570"/>
+      <g pointerEvents="bounding-box" style={{cursor: 'pointer'}} transform="translate(0, 10)" onClick={() => setMode('import')}>
+        <circle cx="0" cy="0" r="3" fill={mode === 'import' ? purple : 'none'} stroke={purple}/>
         <text fontSize="6" dy="2" dx="6">Import</text>
       </g>
     </g>
+
+    {/* Loader */}
     {!countries && (
-      <g transform="translate(-200, -300)">
-        <image x="-80" y="0" width="160" height="160" xlinkHref="/loader.svg" />
+      <g transform="translate(-80, -80)">
+        <image width="160" height="160" xlinkHref="/loader.svg" />
       </g>
     )}
 
+    {/* Countries clockface */}
     {countries && (
-      <g transform="translate(-200, -200)">
+      <g>
         {countries.leaves().map((l, i) => (
           <g
             key={i}
             transform={`rotate(${l.x * 180 / Math.PI - 90}) translate(${l.y},0)`}
           >
             <text
+              className="country-tag"
               pointerEvents="bounding-box"
               style={{cursor: "pointer"}}
               fontSize={5}
@@ -110,8 +116,9 @@ function ImportExportPlot() {
       </g>
     )}
 
+    {/* Trade links */}
     {trades && (
-      <g fill="none" stroke="#888" transform="translate(-200, -200)">
+      <g fill="none" stroke="#888">
         {trades.map((t, i) => (
           (!isSelected(t) && (
             <path

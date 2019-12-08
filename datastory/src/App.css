@@ -1,1 +1,15 @@
-@import '~milligram'
+@import '~milligram';
+
+.plot-switch {
+  position: absolute;
+  width: 20%;
+  right: 0px;
+}
+
+.plot-switch button {
+  width: 100%;
+}
+
+.country-tag:hover {
+  font-weight: bold;
+}
