@@ -8,6 +8,8 @@ const line = lineRadial()
   .curve(curveBundle.beta(0.85))
   .radius(d => d.y)
   .angle(d => d.x);
+let neighbours;
+let neighbours_set = new Set();
 
 function ImportExportPlot() {
   let [countries, updateCountries] = useState(null);
@@ -17,6 +19,7 @@ function ImportExportPlot() {
 
   useEffect(() => {
     fetch("trade_data.json").then((resp) => resp.json()).then((json) => {
+      neighbours = json.exports_to;
       const tree = cluster().size([2 * Math.PI, 100]);
       const h = stratify().id((d) => d.id).parentId((d) => d.parent)(json.countries);
       const t = tree(h.sort((a, b) => ascending(a.height, b.height) || ascending(a.id)));
@@ -38,6 +41,9 @@ function ImportExportPlot() {
   }, []);
 
   const selectCountry = (c) => {
+    // neighbours = new Set(t.);
+    neighbours_set = new Set(neighbours[c.id]);
+    // console.log(neighbours_set);
     updateSelectedCountry(c ? c : null);
   }
 
@@ -117,7 +123,8 @@ function ImportExportPlot() {
                 textAnchor={l.x < Math.PI ? "start" : "end"}
                 transform={l.x >= Math.PI ? "rotate(180)" : ""}
                 onMouseEnter={() => selectCountry(l)}
-                onMouseLeave={() => selectCountry(null)}
+                style={ neighbours_set.has(l.data.id) ? { fontWeight: 'bold' } : { fontWeight: 'normal' } }
+                // onMouseLeave={() => selectCountry(null)}
               >{l.data.name}</text>
             </g>
           ))}
@@ -131,7 +138,7 @@ function ImportExportPlot() {
             (!isSelected(t) && (
               <path
                 key={i}
-                style={{maxBlendMode: "none", opacity: 0.2, zIndex: 99}}
+                style={{maxBlendMode: "none", opacity: 0.05, zIndex: 99}}
                 stroke="#888"
                 d={line(t.path)}
               />
