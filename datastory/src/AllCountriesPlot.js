@@ -1,60 +1,111 @@
 import React, { useState, useEffect } from 'react';
-import { stratify, lineRadial, curveBundle, cluster,
-         ascending, scaleSqrt, interpolateBlues, format } from 'd3';
+import { interpolateBlues, interpolateOranges, interpolateRdYlBu, scaleLinear, scaleLog } from 'd3';
+import { geoPath } from 'd3-geo';
+import { geoRobinson } from 'd3-geo-projection';
 
-// const scale = scaleSqrt().domain([0.001, 6000000]).range([0.6, 1]);
-// const line = lineRadial()
-//   .curve(curveBundle.beta(0.85))
-//   .radius(d => d.y)
-//   .angle(d => d.x);
+const projection = geoRobinson()
+  .scale(70)
+  .rotate([352, 0, 0])
+  .translate( [-200, -200]);
+
+const path = geoPath().projection(projection);
+
+const PLOTS = {
+  population: 'Population',
+  temperatures: 'Temperatures',
+  carbon_stock: 'Carbon Stock',
+  co2: ['CO', <sub key='wtfreact?'>2</sub>]
+}
+
+const linear_scale = scaleLinear().domain([0, 1]).range([0, 1]);
+const log_scale = scaleLog().domain([0.1, 1]).range([0, 1]);
+const SCALES = {
+  population: scaleLog().domain([640, 1400000000]).range([0, 1]),
+  temperatures: scaleLinear().domain([-3, 3]).range([1, 0]),
+  carbon_stock: scaleLog().domain([0.1, 65000]).range([0, 1]),
+  co2: scaleLog().domain([0.1, 700000]).range([0, 1])
+}
+
+const COLORS = {
+  population: interpolateBlues,
+  temperatures: interpolateRdYlBu,
+  carbon_stock: interpolateOranges,
+  co2: interpolateOranges
+}
+
 
 function AllCountriesPlot() {
-  // let [countries, updateCountries] = useState(null);
-  // let [trades, updateTrades] = useState([]);
+  let [countries, updateCountries] = useState(null);
+  let [data, updateData] = useState(null);
   // let [selectedCountry, updateSelectedCountry] = useState(null);
-  // let [mode, setMode] = useState('export');
+  let [mode, setMode] = useState('population');
+  let [year, setYear] = useState(2000);
+  // let [worldScale, setWorldScale] = useState(null);
 
   useEffect(() => {
-    // fetch("trade_data.json").then((resp) => resp.json()).then((json) => {
-    //   const tree = cluster().size([2 * Math.PI, 150]);
-    //   const h = stratify().id((d) => d.id).parentId((d) => d.parent)(json.countries);
-    //   const t = tree(h.sort((a, b) => ascending(a.height, b.height) || ascending(a.id)));
-    //   updateCountries(t);
-    //   let flatTree = {};
-    //   t.each(n => {
-    //     flatTree[n.id] = n;
-    //   });
+    fetch("world_countries.json").then((resp) => resp.json()).then((json) => {
+      updateCountries(json.features);
+    })
+  }, [])
 
-    //   updateTrades(json.trades.map(([amount, from, to]) => {
-    //     return {
-    //       exporter: from,
-    //       importer: to,
-    //       path: flatTree[from].path(flatTree[to]),
-    //       amount
-    //     }
-    //   }));
-    // })
-  }, []);
+  useEffect(() => {
+    fetch(mode + '.json').then((resp) => resp.json()).then((json) => {
+      // SCALES[mode].domain([Math.round(json.metadata.countryMin), Math.round(json.metadata.countryMax)]);
+      updateData(json);
+    });
+  }, [mode]);
 
-  // const selectCountry = (c) => {
-  //   updateSelectedCountry(c ? c : null);
-  // }
+  const countryColor = (c) => {
+    if (data.countries[year][c.id]) {
+      return COLORS[mode](SCALES[mode](data.countries[year][c.id]));
+    } else {
+      return '#aaa';
+    } 
+  } 
 
-  // const isSelected = (t) => {
-  //   return selectedCountry && (
-  //     (mode === 'export' && selectedCountry.id === t.exporter.toString())
-  //     || (mode === 'import' && selectedCountry.id === t.importer.toString())
-  //   );
-  // }
+  const changeYear = (e) => {
+    setYear(e.target.value)
+  }
 
   return (<div className="all-countries-plot">
     <div className="plot-switch">
-      <button className="button">Population</button>      
-      <button className="button button-clear">Temperature</button>      
-      <button className="button button-clear">CO<sub>2</sub></button>      
+      {Object.keys(PLOTS).map((k, i) => (
+        <button
+          className={`button ${k === mode ? 'button-outline' : 'button-clear'}`}
+          key={i}
+          onClick={() => setMode(k)}
+        >
+          {PLOTS[k]}
+        </button>
+      ))}
     </div>
-    <svg viewBox="-400 -400 400 400" xmlns="http://www.w3.org/2000/svg">
+    <svg viewBox="-400 -300 400 300" xmlns="http://www.w3.org/2000/svg">
+      {data && (<>
+        <g transform="translate(0, 120)">
+          {countries && countries.map((c, i) => {
+            // console.log(worldScale);
+            // console.log(worldScale(data.countries[year][c.id]));
+            return (
+            <path
+              key={i}
+              d={path(c)}
+              fill={countryColor(c)}
+            />
+          )})}
+        </g>
+      </>)}
     </svg>
+    {data && (
+      <input
+        style={{width: '100%'}}
+        type="range"
+        min={data.metadata.minYear}
+        max={data.metadata.maxYear}
+        value={year}
+        onChange={changeYear}
+        step="1"
+      />
+    )}
   </div>);
 }
 
