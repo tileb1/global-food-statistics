@@ -8,42 +8,49 @@ const line = lineRadial()
   .curve(curveBundle.beta(0.85))
   .radius(d => d.y)
   .angle(d => d.x);
-let neighbours;
-let neighbours_set = new Set();
 
 function ImportExportPlot() {
   let [countries, updateCountries] = useState(null);
   let [trades, updateTrades] = useState([]);
   let [selectedCountry, updateSelectedCountry] = useState(null);
+  let [neighbours, setNeighbours] = useState({});
   let [mode, setMode] = useState('export');
 
   useEffect(() => {
     fetch("trade_data.json").then((resp) => resp.json()).then((json) => {
-      neighbours = json.exports_to;
       const tree = cluster().size([2 * Math.PI, 100]);
       const h = stratify().id((d) => d.id).parentId((d) => d.parent)(json.countries);
       const t = tree(h.sort((a, b) => ascending(a.height, b.height) || ascending(a.id)));
-      updateCountries(t);
-      let flatTree = {};
+      const flatTree = {};
+      const nbs = { export: {}, import: {} };
       t.each(n => {
+        nbs['export'][n.id] = new Set();
+        nbs['import'][n.id] = new Set();
+
+        if (n.data.name === 'USA') {
+          updateSelectedCountry(n)
+        }
         flatTree[n.id] = n;
       });
 
-      updateTrades(json.trades.map(([amount, from, to]) => {
-        return {
+      const ts = [];
+      json.trades.forEach(([amount, from, to]) => {
+        nbs['export'][from].add(to);
+        nbs['import'][to].add(from);
+        ts.push({
           exporter: from,
           importer: to,
           path: flatTree[from].path(flatTree[to]),
           amount
-        }
-      }));
+        });
+      });
+      setNeighbours(nbs);
+      updateTrades(ts);
+      updateCountries(t);
     })
   }, []);
 
   const selectCountry = (c) => {
-    // neighbours = new Set(t.);
-    neighbours_set = new Set(neighbours[c.id]);
-    // console.log(neighbours_set);
     updateSelectedCountry(c ? c : null);
   }
 
@@ -116,15 +123,17 @@ function ImportExportPlot() {
               <text
                 className="country-tag"
                 pointerEvents="bounding-box"
-                style={{cursor: "pointer"}}
-                fontSize="0.3em"
+                style={{
+                  cursor: "pointer",
+                  fontWeight: neighbours[mode][selectedCountry.id].has(l.data.id) || selectedCountry === l ? 'bold' : 'normal'
+                }}
+                fill={selectedCountry === l ? purple : 'black'}
+                fontSize={selectedCountry === l ? '0.4em' : '0.3em'}
                 dy="0.5em"
                 x={l.x < Math.PI ? 6 : -6}
                 textAnchor={l.x < Math.PI ? "start" : "end"}
                 transform={l.x >= Math.PI ? "rotate(180)" : ""}
                 onMouseEnter={() => selectCountry(l)}
-                style={ neighbours_set.has(l.data.id) ? { fontWeight: 'bold' } : { fontWeight: 'normal' } }
-                // onMouseLeave={() => selectCountry(null)}
               >{l.data.name}</text>
             </g>
           ))}
