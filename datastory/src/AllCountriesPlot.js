@@ -17,8 +17,6 @@ const PLOTS = {
   co2: ['CO', <sub key='wtfreact?'>2</sub>]
 }
 
-const linear_scale = scaleLinear().domain([0, 1]).range([0, 1]);
-const log_scale = scaleLog().domain([0.1, 1]).range([0, 1]);
 const SCALES = {
   population: scaleLog().domain([640, 1400000000]).range([0, 1]),
   temperatures: scaleLinear().domain([-3, 3]).range([1, 0]),
@@ -37,10 +35,8 @@ const COLORS = {
 function AllCountriesPlot() {
   let [countries, updateCountries] = useState(null);
   let [data, updateData] = useState(null);
-  // let [selectedCountry, updateSelectedCountry] = useState(null);
   let [mode, setMode] = useState('population');
   let [year, setYear] = useState(2000);
-  // let [worldScale, setWorldScale] = useState(null);
 
   useEffect(() => {
     fetch("world_countries.json").then((resp) => resp.json()).then((json) => {
@@ -50,7 +46,6 @@ function AllCountriesPlot() {
 
   useEffect(() => {
     fetch(mode + '.json').then((resp) => resp.json()).then((json) => {
-      // SCALES[mode].domain([Math.round(json.metadata.countryMin), Math.round(json.metadata.countryMax)]);
       updateData(json);
     });
   }, [mode]);
@@ -83,8 +78,6 @@ function AllCountriesPlot() {
       {data && (<>
         <g transform="translate(0, 120)">
           {countries && countries.map((c, i) => {
-            // console.log(worldScale);
-            // console.log(worldScale(data.countries[year][c.id]));
             return (
             <path
               key={i}

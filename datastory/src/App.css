@@ -1,16 +1,29 @@
 @import '~milligram';
 
+.header {
+  padding-top: 200px;
+  padding-bottom: 150px;
+  background: url('/planet.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.main {
+  padding-top: 50px;
+}
+
+.header h1 {
+  font-size: 7em;
+  font-weight: bold;
+  color: white;
+}
+
 .plot-switch {
   position: absolute;
   width: 20%;
-  right: 0px;
+  right: 20px;
 }
 
 .plot-switch button {
   width: 100%;
 }
-
-/* .country-tag:hover {
-  font-weight: bold;
-  font-size: 7px;
-} */
