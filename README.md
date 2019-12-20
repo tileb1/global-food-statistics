@@ -64,7 +64,7 @@ As we have already performed thorough analyses in milestone 2, we plan to bring 
     - [x] Write Data Story
     
 # Group member contributions:
-- Ivan: Developing the data story website
-- Tim: Plotting graph during data analysis and preparing final presentation
+- Ivan: Developing the data story website and presentation
+- Tim: Plotting graph during data analysis and data analysis
 - Timur: Problem formulation, premilinary data analysis and writing up the data story
 - Thomas: Applied data analysis and writing up the data story
