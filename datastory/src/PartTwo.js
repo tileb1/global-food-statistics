@@ -15,7 +15,6 @@ function PartThree() {
     <PlotProduction/>
     <p>Unfortunately for all the meat lovers out there and to the delight of all vegetarians and vegans (for the sake of winning arguments), the striking observation we can make from the above plots is that meat is indeed extremely bad for the environment (compared to other foods). Even though it only represents roughly 7% of food production, it is responsible for over half of the CO2 equivalent emissions cause by agriculture. So you better start considering meat-less options more frequently for your meals. Although meat is bad for the environment, its production quantity is negligible in comparison to rice or cereals. This is mostly due to the fact that meat is generally more expensive and hence not as accessible to everyone such as its alternatives. One could potentially presume that our food production processes are simply inefficient in terms of greenhouse gas emissions. To explore this in more detail, we plot below the evolution of kilograms of CO2 equivalent emissions per kilogram produced of each food type.</p>
     <p>In a more positive light, we can see that the efficiency of food production in terms of green house gas emissions has actually improved over time generally across all food types (including meat).  So although agricultural CO2 emissions are increasing due to rising population levels, we are making progress in terms of emission intensities.</p>
-    {/* <ImportExportPlot/> */}
   </div>);
 }
 
