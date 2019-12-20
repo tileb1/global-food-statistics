@@ -2,6 +2,7 @@ import React from 'react';
 import LazyLoad from 'react-lazyload';
 import PartOne from './PartOne.js';
 import PartTwo from './PartTwo.js';
+import PartThree from './PartThree.js';
 import './App.css';
 
 function App() {
@@ -12,11 +13,14 @@ function App() {
       </div>      
     </div>
     <div className="container main">
-      <LazyLoad height={100}>
+      <LazyLoad height={1000}>
         <PartOne/>
       </LazyLoad>
-      <LazyLoad height={100}>
+      <LazyLoad height={1000}>
         <PartTwo/>
+      </LazyLoad>
+      <LazyLoad height={1000}>
+        <PartThree/>
       </LazyLoad>
     </div>
   </>);

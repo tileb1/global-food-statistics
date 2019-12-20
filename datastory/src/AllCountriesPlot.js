@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { interpolateBlues, interpolateOranges, interpolateRdYlBu, scaleLinear, scaleLog } from 'd3';
+import { interpolateBlues, interpolateOranges, interpolateGreens, interpolateRdYlBu, scaleLinear, scaleLog } from 'd3';
 import { geoPath } from 'd3-geo';
 import { geoRobinson } from 'd3-geo-projection';
+import LinearPlot from './LinearPlot';
 
 const projection = geoRobinson()
   .scale(70)
@@ -21,13 +22,13 @@ const SCALES = {
   population: scaleLog().domain([640, 1400000000]).range([0, 1]),
   temperatures: scaleLinear().domain([-3, 3]).range([1, 0]),
   carbon_stock: scaleLog().domain([0.1, 65000]).range([0, 1]),
-  co2: scaleLog().domain([0.1, 700000]).range([0, 1])
+  co2: scaleLog().domain([0.0001, 0.08]).range([0, 1])
 }
 
 const COLORS = {
   population: interpolateBlues,
   temperatures: interpolateRdYlBu,
-  carbon_stock: interpolateOranges,
+  carbon_stock: interpolateGreens,
   co2: interpolateOranges
 }
 
@@ -51,7 +52,7 @@ function AllCountriesPlot() {
   }, [mode]);
 
   const countryColor = (c) => {
-    if (data.countries[year][c.id]) {
+    if (data && data.countries[year][c.id]) {
       return COLORS[mode](SCALES[mode](data.countries[year][c.id]));
     } else {
       return '#aaa';
@@ -68,25 +69,28 @@ function AllCountriesPlot() {
         <button
           className={`button ${k === mode ? 'button-outline' : 'button-clear'}`}
           key={i}
-          onClick={() => setMode(k)}
+          onClick={() => {
+            updateData(null);
+            setYear(2000);
+            setMode(k);
+          }}
         >
           {PLOTS[k]}
         </button>
       ))}
     </div>
     <svg viewBox="-400 -300 400 300" xmlns="http://www.w3.org/2000/svg">
-      {data && (<>
-        <g transform="translate(0, 120)">
-          {countries && countries.map((c, i) => {
-            return (
-            <path
-              key={i}
-              d={path(c)}
-              fill={countryColor(c)}
-            />
-          )})}
-        </g>
-      </>)}
+      {/* <LinearPlot data={} /> */}
+      <g transform="translate(0, 120)">
+        {countries && countries.map((c, i) => {
+          return (
+          <path
+            key={i}
+            d={path(c)}
+            fill={countryColor(c)}
+          />
+        )})}
+      </g>
     </svg>
     {data && (
       <input
