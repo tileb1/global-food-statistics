@@ -81,11 +81,10 @@ function PlotProduction() {
         <BarPlot
           width={width}
           height={height}
-          color={interpolateBlues(1)}
           data={data.emissions}
           color={interpolateBlues(1)}
           xLabelShift={150}
-          yLabel="Emissions"
+          yLabel="CO2eq [GTonnes]"
           // rotateXVals={true}
           transform="translate(30, 00)"
         />
@@ -93,7 +92,7 @@ function PlotProduction() {
         <BarPlot
           width={width}
           height={height}
-          yLabel="Production"
+          yLabel="Mass [GTonnes]"
           color={interpolateBlues(1)}
           data={data.productions}
           transform="translate(450, 0)"
