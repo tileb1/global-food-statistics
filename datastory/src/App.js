@@ -3,7 +3,9 @@ import LazyLoad from 'react-lazyload';
 import PartOne from './PartOne.js';
 import PartTwo from './PartTwo.js';
 import PartThree from './PartThree.js';
+import Conlusion from './Conlusion';
 import './App.css';
+import PartFour from './PartFour.js';
 
 function App() {
   return (<>
@@ -22,6 +24,12 @@ function App() {
       </LazyLoad>
       <LazyLoad height={1000}>
         <PartThree/>
+      </LazyLoad>
+      <LazyLoad height={1000}>
+        <PartFour/>
+      </LazyLoad>
+      <LazyLoad height={1000}>
+        <Conlusion/>
       </LazyLoad>
     </div>
   </>);
