@@ -153,7 +153,7 @@ function PlotCO2Capita() {
           data={data.exporters}
           // xLabel="Some"
           xLabelShift={500}
-          yLabel="CO2eq [log(Kg / Capita)]"
+          yLabel="CO2eq [log(Tonnes / Capita)]"
           rotateXVals={true}
           transform="translate(30, 0)"
         />
@@ -201,7 +201,7 @@ function PlotCO2CapitaNorm() {
           data={data.exporters}
           // xLabel="Some"
           xLabelShift={500}
-          yLabel="CO2eq [log(Kg / Capita)]"
+          yLabel="CO2eq [log(Tonnes / Capita)]"
           rotateXVals={true}
           transform="translate(30, 0)"
         />
