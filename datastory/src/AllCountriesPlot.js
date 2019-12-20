@@ -19,10 +19,10 @@ const PLOTS = {
 }
 
 const SCALES = {
-  population: scaleLog().domain([640, 1400000000]).range([0, 1]),
+  population: scaleLog().domain([2000000, 1400000000]).range([0, 1]),
   temperatures: scaleLinear().domain([-3, 3]).range([1, 0]),
   carbon_stock: scaleLog().domain([0.1, 65000]).range([0, 1]),
-  co2: scaleLog().domain([0.0001, 0.08]).range([0, 1])
+  co2: scaleLog().domain([250, 686455]).range([0, 1])
 }
 
 const COLORS = {
