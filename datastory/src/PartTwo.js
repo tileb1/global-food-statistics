@@ -39,7 +39,7 @@ function PlotEmissions() {
   return (<div className="part">
     <svg viewBox="0 0 800 480" xmlns="http://www.w3.org/2000/svg">
       {data && (<>
-        <text x="350" y="15" fill="black" font-weight="bold">Emissions per sector</text>
+        <text x="350" y="15" fill="black" fontWeight="bold">Emissions per sector</text>
         <BarPlot
           width={width}
           height={height}
@@ -77,7 +77,7 @@ function PlotProduction() {
   return (<div className="part">
     <svg viewBox="0 0 800 320" xmlns="http://www.w3.org/2000/svg">
       {data && (<>
-        <text x="120" y="15" fill="black" font-weight="bold">Emissions per food type</text>
+        <text x="120" y="15" fill="black" fontWeight="bold">Emissions per food type</text>
         <BarPlot
           width={width}
           height={height}
@@ -88,7 +88,7 @@ function PlotProduction() {
           // rotateXVals={true}
           transform="translate(30, 00)"
         />
-        <text x="520" y="15" fill="black" font-weight="bold">Production per food type</text>
+        <text x="520" y="15" fill="black" fontWeight="bold">Production per food type</text>
         <BarPlot
           width={width}
           height={height}
