@@ -1,7 +1,9 @@
 import React from 'react';
 
 function LinearPlot() {
-  return (<></>);
+  return (<g>
+    
+  </g>);
 }
 
 export default LinearPlot;
