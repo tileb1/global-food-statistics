@@ -71,13 +71,13 @@ function PlotProduction() {
   }, [])
 
   const width = 300;
-  const height = 300;
+  const height = 470;
   const color = "blue";
 
   return (<div className="part">
     <svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
       {data && (<>
-        <text x="120" y="15" fill="black" font-weight="bold">Emissions per foodtype</text>
+        <text x="120" y="15" fill="black" font-weight="bold">Emissions per food type</text>
         <BarPlot
           width={width}
           height={height}
@@ -88,7 +88,7 @@ function PlotProduction() {
           // rotateXVals={true}
           transform="translate(30, 00)"
         />
-        <text x="520" y="15" fill="black" font-weight="bold">Production per foodtype</text>
+        <text x="520" y="15" fill="black" font-weight="bold">Production per food type</text>
         <BarPlot
           width={width}
           height={height}

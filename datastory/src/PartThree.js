@@ -30,7 +30,7 @@ function PlotImportsExports() {
   }, [])
 
   const width = 300;
-  const height = 300;
+  const height = 370;
   const color = "blue";
 
   return (<div className="part">
