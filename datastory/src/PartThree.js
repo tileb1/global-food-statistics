@@ -58,7 +58,7 @@ function PlotImportsExports() {
   return (<div className="part">
     <svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
       {data && (<>
-        <text x="150" y="15" fill="black" font-weight="bold">Top Exporters</text>
+        <text x="150" y="15" fill="black" fontWeight="bold">Top Exporters</text>
         <BarPlot
           width={width}
           height={height}
@@ -70,7 +70,7 @@ function PlotImportsExports() {
           rotateXVals={true}
           transform="translate(30, 0)"
         />
-        <text x="550" y="15" fill="black" font-weight="bold">Top Importers</text>
+        <text x="550" y="15" fill="black" fontWeight="bold">Top Importers</text>
         <BarPlot
           width={width}
           height={height}
@@ -107,7 +107,7 @@ function PlotCO2() {
   return (<div className="part">
     <svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
       {data && (<>
-        <text x="300" y="15" fill="black" font-weight="bold">Top 10 CO2eq contributors</text>
+        <text x="300" y="15" fill="black" fontWeight="bold">Top 10 CO2eq contributors</text>
         <BarPlot
           width={width}
           height={height}
@@ -155,7 +155,7 @@ function PlotCO2Capita() {
   return (<div className="part">
     <svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
       {data && (<>
-        <text x="300" y="15" fill="black" font-weight="bold">Top 10 CO2eq contributors / Capita</text>
+        <text x="300" y="15" fill="black" fontWeight="bold">Top 10 CO2eq contributors / Capita</text>
         <BarPlot
           width={width}
           height={height}
@@ -203,7 +203,7 @@ function PlotCO2CapitaNorm() {
   return (<div className="part">
     <svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
       {data && (<>
-        <text x="180" y="15" fill="black" font-weight="bold">Top 10 CO2eq contributors / Capita normalized by import-exports</text>
+        <text x="180" y="15" fill="black" fontWeight="bold">Top 10 CO2eq contributors / Capita normalized by import-exports</text>
         <BarPlot
           width={width}
           height={height}
