@@ -4,7 +4,7 @@ import AllCountriesPlot from './AllCountriesPlot';
 function PartOne() {
   return (<>
     <div className="part">
-      <p>As Greta Thunberg recently elicited during her speech at the U.N. Climate Action Summit: “People are suffering. People are dying. Entire ecosystems are collapsing. We are in the beginning of a mass extinction”. In an attempt to assist her in efforts to spread awareness, this article will take a more lighthearted approach in taking a closer look at the ways humanity sustains its nutritional needs and the impact it has on the planet. Specifically, we will be tackling the topic in game-like manner, similar to the murder mystery game Cluedo.</p>
+      <p>As Greta Thunberg recently elicited during her speech at the U.N. Climate Action Summit: “People are suffering. People are dying. Entire ecosystems are collapsing. We are in the beginning of a mass extinction”. In an attempt to assist her in efforts to spread awareness, this article will take a more lighthearted approach in taking a closer look at the ways humanity sustains its nutritional needs and the impact it has on the planet. In order to do so, we will leverage the open-source data provided by the Food and Agriculture Organisation Corporate Statistical Database (FAOSTAT). Specifically, we will be tackling the topic in game-like manner, similar to the murder mystery game Cluedo.</p>
     </div>
     <div className="part">
       <h2>Is the planet dying?</h2>

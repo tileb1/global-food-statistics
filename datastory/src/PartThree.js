@@ -198,7 +198,7 @@ function PlotCO2CapitaNorm() {
   const color = "blue";
 
   return (<div className="part">
-    <svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+    <svg viewBox="0 0 800 350" xmlns="http://www.w3.org/2000/svg">
       {data && (<>
         <text x="180" y="15" fill="black" font-weight="bold">Top 10 CO2eq contributors / Capita normalized by import-exports</text>
         <BarPlot
