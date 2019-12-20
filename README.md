@@ -62,6 +62,8 @@ As we have already performed thorough analyses in milestone 2, we plan to bring 
 * 16.12
     - [x] Convert plots to javascript
     - [x] Write Data Story
+* 28.12
+    - [ ] Prepare poster for presentation
     
 # Group member contributions:
 - Ivan: Developing the data story website and presentation
