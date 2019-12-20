@@ -36,6 +36,7 @@ function PlotImportsExports() {
   return (<div className="part">
     <svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
       {data && (<>
+        <text x="150" y="15" fill="black" font-weight="bold">Top Exporters</text>
         <BarPlot
           width={width}
           height={height}
@@ -47,6 +48,7 @@ function PlotImportsExports() {
           rotateXVals={true}
           transform="translate(30, 0)"
         />
+        <text x="550" y="15" fill="black" font-weight="bold">Top Importers</text>
         <BarPlot
           width={width}
           height={height}
