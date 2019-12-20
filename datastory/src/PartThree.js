@@ -30,7 +30,10 @@ function PartTwo() {
     <ImportExportPlot/>
     <p>Despite its conciseness, the import-export plot conveys a lot of information. It illustrates trading quantities with regards to food between pairs of countries as well as the top traded items of each countries. Check it out by hovering over a country! The USA is a great example. Not only have we seen that it is the top exporter, it is also the country that exports to the most countries. You can also toggle the arcs from exports to imports on the upper right of the plot.</p>
     <p>Looking at the general trends on the plot, it is worth noting that countries seem to be clustered by their geographical position. This is indeed what we would expect from a capitalist market as it reduces the shipping costs of the merchandise. Another little detail that is also worth noticing is that African countries don’t seem to trade together too much. At first, it might seem weird but we have to keep in mind that these countries already have a hard time with food as most of them are food deficit countries and have to import from other continents. As such, all the internal production is used by the locals and there is no incentive to trade with others. South-America seems to follow a similar trend although not as considerable.</p>
+    <p>Now that we have analysed the international flow of food, we come back to our search for the suspect. Following our illustration of the top 10 countries in terms of CO2 emissions per capita, we now normalise emissions taking into account the imports and exports of food as previously stated. Hence, we compute a given country's CO2 emissions by adding the emissions caused by the production of food that it imported and subtract the emissions caused by the production of food it exports. As a result, we get the following top 10.</p>
     <PlotCO2CapitaNorm/>
+    <p>Looking at the above plot, we can observe that the Top 10 countries normalized by the import-exports are completely different from the non normalized Top 10. New Zealand and Uruguay are the only countries which are found simultaneously in both Top 10s. At first glance, the other countries found here might even seem out of place. Macao is the only “country” which did not surprise us at first because of it’s heavy imports in general. The African countries found in this Top 10 actually make sense when we corroborate the results with previous plots. Indeed we found from the import-exports plot that most African countries didn’t export much and imported from abroad since they were food deficient. As such, this creates an imbalance in import-exports which penalize them and put them first in the worst Top 10.</p>
+    <p>Keep in mind that we are only looking at the CO2 emissions with regards to food here. If we were to take all emission sources into account, we definitely wouldn’t find these African countries in the Top 10 as it is common knowledge that the ecological footprints of Western countries is much higher. But that is a story for another time.</p>
   </div>);
 }
 
@@ -198,7 +201,7 @@ function PlotCO2CapitaNorm() {
   const color = "blue";
 
   return (<div className="part">
-    <svg viewBox="0 0 800 350" xmlns="http://www.w3.org/2000/svg">
+    <svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
       {data && (<>
         <text x="180" y="15" fill="black" font-weight="bold">Top 10 CO2eq contributors / Capita normalized by import-exports</text>
         <BarPlot
