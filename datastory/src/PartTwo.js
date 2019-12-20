@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { interpolateBlues } from 'd3';
 import BarPlot from './BarPlot';
 
-function PartTwo() {
+function PartThree() {
   return (<div className="part">
     <h2>Crime scene investigation</h2>
     <p>As we have now established that a felony has been (or is being) committed, we aim to further investigate the crime scene. Particularly, from a nutritional point of view, we will examine what are the potential weapons (i.e. food types) used by the perpetrators (i.e. humanity) that have inflicted or are inflicting most damage to the planet and their level of implication.</p>
@@ -37,7 +37,7 @@ function PlotEmissions() {
   const color = "blue";
 
   return (<div className="part">
-    <svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+    <svg viewBox="0 0 800 480" xmlns="http://www.w3.org/2000/svg">
       {data && (<>
         <text x="350" y="15" fill="black" font-weight="bold">Emissions per sector</text>
         <BarPlot
@@ -75,9 +75,9 @@ function PlotProduction() {
   const color = "blue";
 
   return (<div className="part">
-    <svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+    <svg viewBox="0 0 800 320" xmlns="http://www.w3.org/2000/svg">
       {data && (<>
-        <text x="120" y="15" fill="black" font-weight="bold">Emissions per foodtype</text>
+        <text x="120" y="15" fill="black" font-weight="bold">Emissions per food type</text>
         <BarPlot
           width={width}
           height={height}
@@ -88,7 +88,7 @@ function PlotProduction() {
           // rotateXVals={true}
           transform="translate(30, 00)"
         />
-        <text x="520" y="15" fill="black" font-weight="bold">Production per foodtype</text>
+        <text x="520" y="15" fill="black" font-weight="bold">Production per food type</text>
         <BarPlot
           width={width}
           height={height}
@@ -103,4 +103,4 @@ function PlotProduction() {
 }
 
 
-export default PartTwo;
+export default PartThree;
