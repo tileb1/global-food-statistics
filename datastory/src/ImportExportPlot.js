@@ -3,7 +3,7 @@ import { stratify, lineRadial, curveBundle, cluster,
          ascending, scaleSqrt, interpolateBlues, format } from 'd3';
 
 const purple = "#9b4dca";
-const scale = scaleSqrt().domain([0.001, 6000000]).range([0.6, 1]);
+//const scale = scaleSqrt().domain([0.001, 6000000]).range([1, 1]);
 const line = lineRadial()
   .curve(curveBundle.beta(0.85))
   .radius(d => d.y)
@@ -158,7 +158,8 @@ function ImportExportPlot() {
               <path
                 key={i}
                 style={{maxBlendMode: "none", opacity: 0.8, zIndex: 100}}
-                stroke={interpolateBlues(scale(t.amount))}
+                //stroke={interpolateBlues(scale(t.amount))}
+                stroke={interpolateBlues(1)}
                 d={line(t.path)}
               />
             ))
