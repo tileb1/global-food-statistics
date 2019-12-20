@@ -53,12 +53,18 @@ As we have already performed thorough analyses in milestone 2, we plan to bring 
 
 # A list of internal milestones for milestone 3
 * 02.12
-    - [ ] Convert plots to javascript
-    - [ ] ML clustering of countries
-    - [ ] Build Data Story flow
+    - [x] Convert plots to javascript
+    - [x] ML clustering of countries
+    - [x] Build Data Story flow
 * 09.12
-    - [ ] Convert plots to javascript
-    - [ ] Write Data Story
+    - [x] Convert plots to javascript
+    - [x] Write Data Story
 * 16.12
-    - [ ] Convert plots to javascript
-    - [ ] Write Data Story
+    - [x] Convert plots to javascript
+    - [x] Write Data Story
+    
+# Group member contributions:
+- Ivan: Developing the data story website
+- Tim: Plotting graph during data analysis and preparing final presentation
+- Timur: Problem formulation, premilinary data analysis and writing up the data story
+- Thomas: Applied data analysis and writing up the data story
