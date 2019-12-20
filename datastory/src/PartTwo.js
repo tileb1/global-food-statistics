@@ -92,7 +92,7 @@ function PlotProduction() {
         <BarPlot
           width={width}
           height={height}
-          yLabel="Mass [GTonnes]"
+          yLabel="Weight [GTonnes]"
           color={interpolateBlues(1)}
           data={data.productions}
           transform="translate(450, 0)"
