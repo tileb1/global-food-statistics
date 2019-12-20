@@ -18,6 +18,12 @@
   color: white;
 }
 
+.header h2 {
+  font-size: 3em;
+  font-weight: bold;
+  color: white;
+}
+
 p {
   font-size: 1.4em;
 }

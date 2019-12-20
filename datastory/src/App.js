@@ -9,6 +9,7 @@ function App() {
     <div className="header">
       <div className="container">
         <h1>Planet Cluedo</h1>
+        <h2>Who is killing mother earth?</h2>
       </div>      
     </div>
     <div className="container main">
