@@ -37,7 +37,7 @@ function PlotEmissions() {
   const color = "blue";
 
   return (<div className="part">
-    <svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+    <svg viewBox="0 0 800 480" xmlns="http://www.w3.org/2000/svg">
       {data && (<>
         <text x="350" y="15" fill="black" font-weight="bold">Emissions per sector</text>
         <BarPlot
@@ -71,11 +71,11 @@ function PlotProduction() {
   }, [])
 
   const width = 300;
-  const height = 470;
+  const height = 300;
   const color = "blue";
 
   return (<div className="part">
-    <svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+    <svg viewBox="0 0 800 320" xmlns="http://www.w3.org/2000/svg">
       {data && (<>
         <text x="120" y="15" fill="black" font-weight="bold">Emissions per food type</text>
         <BarPlot
