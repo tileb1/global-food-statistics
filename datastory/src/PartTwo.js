@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { interpolateBlues } from 'd3';
 import BarPlot from './BarPlot';
 
-function PartTwo() {
+function PartThree() {
   return (<div className="part">
     <h2>Crime scene investigation</h2>
     <p>As we have now established that a felony has been (or is being) committed, we aim to further investigate the crime scene. Particularly, from a nutritional point of view, we will examine what are the potential weapons (i.e. food types) used by the perpetrators (i.e. humanity) that have inflicted or are inflicting most damage to the planet and their level of implication.</p>
@@ -103,4 +103,4 @@ function PlotProduction() {
 }
 
 
-export default PartTwo;
+export default PartThree;
