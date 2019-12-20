@@ -13,9 +13,13 @@
 }
 
 .header h1 {
-  font-size: 7em;
+  font-size: 10em;
   font-weight: bold;
   color: white;
+}
+
+p {
+  font-size: 1.4em;
 }
 
 .plot-switch {
